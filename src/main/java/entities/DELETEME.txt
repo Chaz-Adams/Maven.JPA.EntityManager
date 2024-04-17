@@ -1,0 +1,38 @@
+create table cd(
+    cd_id Integer AUTO_INCREMENT PRIMARY KEY,
+    title varchar(255) NOT NULL,
+    description varchar(255),
+    year varchar(4),
+    artist varchar(255),
+    price FLOAT
+);
+
+create table artist(
+    artist_id int NOT AUTO_INCREMENT NOT NULL,
+    last_name varchar(255) NOT NULL,
+    first_name varchar(255),
+    instrument varchar(255),
+    PRIMARY KEY (ID)
+);
+
+CREATE TABLE artist_cd (
+    cd_id INT ,
+    artist_id INT,
+    FOREIGN KEY (cd_id) REFERENCES cd(cd_id),
+    FOREIGN KEY (artist_id) REFERENCES artist(artist_id),
+    PRIMARY KEY (cd_id, artist_id)
+);
+
+
+INSERT INTO cd ( title, description, year, artist, price)
+VALUES
+("Sleep Alone", "this is the song description", 2011, "Two Door Cinema Club", 1.25),
+("Finesse", "this is the song description", 2019, "Bruno Mars", 8.54),
+("Don't Cry", "this is the song description", 2000, "Guns N' Roses", 7.23);
+
+
+INSERT INTO artist (last_name, first_name, instrument)
+VALUES
+("Smith", "John", "instrument"),
+("Mars", "Bruno", "instrument"),
+("Adams", "Chaz", "instrument");
